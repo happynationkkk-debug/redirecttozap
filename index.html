@@ -6,23 +6,23 @@
     <title>Redirecionando para o WhatsApp...</title>
     <script>
         // 1. ADICIONE SEUS LINKS AQUI
-        // Coloque o caminho (a "barrinha") e o link do WhatsApp na frente.
+        // Coloque o caminho (a "barrinha") e o link do WhatsApp na frente (sem texto).
         const links = {
-            "/suporte": "http://wa.me/5515992773090](https://wa.me/5511999999999?text=Olá,%20preciso%20de%20suporte)",
-            "/vendas": "[https://wa.me/5511888888888?text=Olá,%20quero%20comprar](https://wa.me/5511888888888?text=Olá,%20quero%20comprar)",
-            "/vip": "[https://wa.me/5511777777777?text=Olá,%20sou%20VIP](https://wa.me/5511777777777?text=Olá,%20sou%20VIP)",
-            "/oferta": "[https://wa.me/5511666666666?text=Quero%20a%20oferta](https://wa.me/5511666666666?text=Quero%20a%20oferta)"
+            "/exemplo1": "http://wa.me/5515992773090",
+            "/exemplo2": "http://wa.me/5515992773090",
+            "/vip": "http://wa.me/5515992773090",
+            "/oferta": "http://wa.me/5515992773090"
         };
 
         // 2. LINK PADRÃO (FALLBACK)
-        // Se a pessoa acessar o site direto sem barra nenhuma, ou digitar uma barra que não existe, vai pra cá.
-        const linkPadrao = "[https://wa.me/5511000000000?text=Olá,%20vim%20pelo%20site](https://wa.me/5511000000000?text=Olá,%20vim%20pelo%20site)";
+        // Se a pessoa acessar o site direto sem barra nenhuma, ou digitar uma barra que não existe.
+        const linkPadrao = "http://wa.me/5515992773090";
 
         window.onload = function() {
             // Pega o caminho da URL e transforma em letras minúsculas
             let caminho = window.location.pathname.toLowerCase();
 
-            // Remove a barra do final se a pessoa digitar /suporte/ em vez de /suporte
+            // Remove a barra do final se a pessoa digitar /exemplo1/ em vez de /exemplo1
             if (caminho.endsWith('/') && caminho.length > 1) {
                 caminho = caminho.slice(0, -1);
             }
