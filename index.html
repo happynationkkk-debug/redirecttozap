@@ -8,9 +8,11 @@
         // 1. ADICIONE SEUS LINKS AQUI
         // Coloque o caminho (a "barrinha") e o link do WhatsApp na frente (sem texto).
         const links = {
-        
+            "/leo": "http://wa.me/5588993438365",
+            "/exemplo1": "http://wa.me/5515992773090",
+            "/exemplo2": "http://wa.me/5515992773090",
             "/vip": "http://wa.me/5515992773090",
-            "/leo": "http://wa.me/5588993438365"
+            "/oferta": "http://wa.me/5515992773090"
         };
 
         // 2. LINK PADRÃO (FALLBACK)
@@ -21,7 +23,7 @@
             // Pega o caminho da URL e transforma em letras minúsculas
             let caminho = window.location.pathname.toLowerCase();
 
-            // Remove a barra do final se a pessoa digitar /exemplo1/ em vez de /exemplo1
+            // Remove a barra do final se a pessoa digitar /leo/ em vez de /leo
             if (caminho.endsWith('/') && caminho.length > 1) {
                 caminho = caminho.slice(0, -1);
             }
