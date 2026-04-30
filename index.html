@@ -6,33 +6,27 @@
     <title>Redirecionando para o WhatsApp...</title>
     <script>
         // 1. ADICIONE SEUS LINKS AQUI
-        // Coloque o caminho (a "barrinha") e o link do WhatsApp na frente (sem texto).
+        // Exatamente 3 números configurados.
         const links = {
+            "/jhon": "http://wa.me/5588993739773",
             "/leo": "http://wa.me/5588993438365",
-            "/exemplo1": "http://wa.me/5515992773090",
-            "/exemplo2": "http://wa.me/5515992773090",
-            "/vip": "http://wa.me/5515992773090",
-            "/oferta": "http://wa.me/5515992773090"
+            "/vip": "http://wa.me/5515992773090"
         };
 
         // 2. LINK PADRÃO (FALLBACK)
-        // Se a pessoa acessar o site direto sem barra nenhuma, ou digitar uma barra que não existe.
-        const linkPadrao = "http://wa.me/5515992773090";
+        // Se a pessoa acessar o site direto sem barra nenhuma, ou digitar uma barra que não existe, vai pro número do Jhon.
+        const linkPadrao = "http://wa.me/5588993739773";
 
         window.onload = function() {
-            // Pega o caminho da URL e transforma em letras minúsculas
             let caminho = window.location.pathname.toLowerCase();
 
-            // Remove a barra do final se a pessoa digitar /leo/ em vez de /leo
             if (caminho.endsWith('/') && caminho.length > 1) {
                 caminho = caminho.slice(0, -1);
             }
 
-            // Verifica se o caminho existe no nosso dicionário de links e redireciona
             if (links[caminho]) {
                 window.location.href = links[caminho];
             } else {
-                // Se não achar o caminho, manda pro link padrão
                 window.location.href = linkPadrao;
             }
         };
@@ -56,7 +50,7 @@
         }
         .loader {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #25D366; /* Cor do WhatsApp */
+            border-top: 4px solid #25D366;
             border-radius: 50%;
             width: 40px;
             height: 40px;
