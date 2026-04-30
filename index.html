@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecionando para o WhatsApp...</title>
+    <script>
+        // 1. ADICIONE SEUS LINKS AQUI
+        // Coloque o caminho (a "barrinha") e o link do WhatsApp na frente.
+        const links = {
+            "/suporte": "http://wa.me/5515992773090](https://wa.me/5511999999999?text=Olá,%20preciso%20de%20suporte)",
+            "/vendas": "[https://wa.me/5511888888888?text=Olá,%20quero%20comprar](https://wa.me/5511888888888?text=Olá,%20quero%20comprar)",
+            "/vip": "[https://wa.me/5511777777777?text=Olá,%20sou%20VIP](https://wa.me/5511777777777?text=Olá,%20sou%20VIP)",
+            "/oferta": "[https://wa.me/5511666666666?text=Quero%20a%20oferta](https://wa.me/5511666666666?text=Quero%20a%20oferta)"
+        };
+
+        // 2. LINK PADRÃO (FALLBACK)
+        // Se a pessoa acessar o site direto sem barra nenhuma, ou digitar uma barra que não existe, vai pra cá.
+        const linkPadrao = "[https://wa.me/5511000000000?text=Olá,%20vim%20pelo%20site](https://wa.me/5511000000000?text=Olá,%20vim%20pelo%20site)";
+
+        window.onload = function() {
+            // Pega o caminho da URL e transforma em letras minúsculas
+            let caminho = window.location.pathname.toLowerCase();
+
+            // Remove a barra do final se a pessoa digitar /suporte/ em vez de /suporte
+            if (caminho.endsWith('/') && caminho.length > 1) {
+                caminho = caminho.slice(0, -1);
+            }
+
+            // Verifica se o caminho existe no nosso dicionário de links e redireciona
+            if (links[caminho]) {
+                window.location.href = links[caminho];
+            } else {
+                // Se não achar o caminho, manda pro link padrão
+                window.location.href = linkPadrao;
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #25D366; /* Cor do WhatsApp */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="loader"></div>
+        <h2>Redirecionando...</h2>
+        <p>Você está sendo levado para o WhatsApp.</p>
+    </div>
+</body>
+</html>
